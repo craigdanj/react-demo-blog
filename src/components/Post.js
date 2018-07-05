@@ -40,19 +40,18 @@ class Post extends Component {
         }
     }
 
-    componentWillReceiveProps() {
+    // componentWillReceiveProps() {
         
-        this.setState({
-            post: {
-                title: "",
-                body: "",
-                new: true
-            }
-        })
-    }
+    //     this.setState({
+    //         post: {
+    //             title: "",
+    //             body: "",
+    //             new: true
+    //         }
+    //     })
+    // }
 
     render() {
-        console.log("RERENDER")
 
         return (
             <form className="post text-left">
