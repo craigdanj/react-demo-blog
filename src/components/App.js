@@ -3,6 +3,7 @@ import logo from '../logo.svg';
 import './App.css';
 import PostList from './PostList'
 import axios from 'axios'
+import {BrowserRouter, Link, Route} from 'react-router-dom'
 
 class App extends Component {
     constructor(props) {
@@ -33,7 +34,6 @@ class App extends Component {
             this.setState({
                 posts: postList
             })
-
             
         })
         .catch(error => {
@@ -44,18 +44,28 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <h1 className="App-title">React demo blog</h1>
-                    <div className="text-left container">
-                        <a>Home</a> /&nbsp;
-                        <a>Create post</a>
-                    </div>
-                </header>
+            <BrowserRouter>
+                <div className="App">
+                    <header className="App-header">
+                        <img src={logo} className="App-logo" alt="logo" />
+                        <h1 className="App-title">React demo blog</h1>
+                        <div className="text-left container">
+                            <Link to="/">Home</Link> /&nbsp;
+                            <Link to="/create">Create post</Link>
+                        </div>
+                    </header>
 
-                <PostList posts={this.state.posts}/>
-            </div>
+                    <Route path="/" exact render={() => {
+                        return <p>Home</p>
+                    }}/>
+                    
+                    <Route path="/create" render={() => {
+                        return <p>Create post!!!!!!!!</p>
+                    }}/>
+
+                    
+                </div>
+            </BrowserRouter>
         );
     }
 }
