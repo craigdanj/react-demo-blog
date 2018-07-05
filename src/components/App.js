@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import './App.css';
+import PostList from './PostList'
 
 class App extends Component {
     render() {
@@ -11,6 +12,7 @@ class App extends Component {
                     <h1 className="App-title">React demo blog</h1>
                 </header>
 
+                <PostList/>
             </div>
         );
     }
