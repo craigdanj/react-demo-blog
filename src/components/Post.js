@@ -9,30 +9,41 @@ class Post extends Component {
         this.state = {
             post: {
                 title: "",
-                body: ""
+                body: "",
+                new: true
             }
         }
     }
 
     componentWillMount() {
-
+        this.setState({
+                    post: {
+                        title: "",
+                        body: "",
+                        new: true
+                    }
+                })
         console.log(this)
 
         //fetch the current list of todos from the server
-        // if(state.match && state.match.params && state.match.params.postId) {
-            axios.get("https://jsonplaceholder.typicode.com/posts/")
+        if(this.props.match && this.props.match.params && this.props.match.params.postId !== "new") {
+            axios.get("https://jsonplaceholder.typicode.com/posts/" + this.props.match.params.postId )
             .then(response => {
                 // handle success
 
-                // this.setState({
-                //     posts: postList
-                // })
+                this.setState({
+                    post: {
+                        title: response.data.title,
+                        body: response.data.body,
+                        new: false
+                    }
+                })
             })
             .catch(error => {
                 // handle error
                 console.log(error);
             })
-        // }
+        }
     }
 
     render() {
@@ -46,7 +57,14 @@ class Post extends Component {
                     <textarea rows="7" type="text" placeholder="Body" value={this.state.post.body}></textarea>
                 </p>
 
-                <button>Create</button>
+                {
+                    this.state.post.new ?
+                        <button type="button">Create</button>
+                    :
+                        <button type="button">Save</button>
+
+
+                }
             </form>
         );
     }

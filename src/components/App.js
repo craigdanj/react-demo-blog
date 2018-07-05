@@ -24,7 +24,7 @@ class App extends Component {
         axios.get("https://jsonplaceholder.typicode.com/posts")
         .then(response => {
             // handle success
-            console.log(response.data);
+            // console.log(response.data);
             postList = response.data.slice(0,10)
 
             for (var i = postList.length - 1; i >= 0; i--) {
@@ -62,9 +62,7 @@ class App extends Component {
                             return <PostList posts={this.state.posts}/>
                         }}/>
 
-                        <Route path="/post/:postId" exact render={() => {
-                            return <Post/>
-                        }}/>
+                        <Route path="/post/:postId" exact component={Post}/>
                     </content>
 
                 </div>
