@@ -54,17 +54,18 @@ class App extends Component {
                             <Link to="/create">Create post</Link>
                         </div>
                     </header>
+                    <content>
 
-                    <Route path="/" exact render={() => {
-                        return <p>Home</p>
-                    }}/>
+                        <Route path="/" exact render={() => {
+                            return <PostList posts={this.state.posts}/>
+                        }}/>
 
-                    <Route path="/create" render={() => {
-                        return <p>Create post!!!!!!!!</p>
-                    }}/>
-                    
-                    
-                    <PostList posts={this.state.posts}/>                    
+                        <Route path="/create" render={() => {
+                            return <p>Create post!!!!!!!!</p>
+                        }}/>
+
+                    </content>
+
                 </div>
             </BrowserRouter>
         );
