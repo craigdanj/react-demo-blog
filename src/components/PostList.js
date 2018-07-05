@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 function PostList(props) {
     let postList = props.posts.map((post, i) => {
-        return (<li>
+        return (<li key={i}>
             <Link to={"/post/" + post.id}>{post.title}</Link>
             </li>)
     });

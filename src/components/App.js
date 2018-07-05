@@ -20,29 +20,27 @@ class App extends Component {
         var postList = [];
 
         //fetch the current list of todos from the server
-        if(this.state.match && this.state.match.params && this.state.match.params.postId) {
-            console.log(this.state.match.params.postId);
-            axios.get("https://jsonplaceholder.typicode.com/posts/" + this.state.match.params.postId)
-            .then(response => {
-                // handle success
-                console.log(response.data);
-                postList = response.data.slice(0,10)
 
-                for (var i = postList.length - 1; i >= 0; i--) {
-                    postList[i].checked = false;
-                    postList[i].text = postList[i].title;
-                }
+        axios.get("https://jsonplaceholder.typicode.com/posts")
+        .then(response => {
+            // handle success
+            console.log(response.data);
+            postList = response.data.slice(0,10)
 
-                this.setState({
-                    posts: postList
-                })
-                
+            for (var i = postList.length - 1; i >= 0; i--) {
+                postList[i].checked = false;
+                postList[i].text = postList[i].title;
+            }
+
+            this.setState({
+                posts: postList
             })
-            .catch(error => {
-                // handle error
-                console.log(error);
-            })
-        }
+            
+        })
+        .catch(error => {
+            // handle error
+            console.log(error);
+        })
     }
 
     render() {
@@ -55,7 +53,7 @@ class App extends Component {
                         <h1 className="App-title">React demo blog</h1>
                         <div className="text-left container">
                             <Link to="/">Home</Link> /&nbsp;
-                            <Link to="/post">Create post</Link>
+                            <Link to="/post/new">Create post</Link>
                         </div>
                     </header>
 
@@ -64,7 +62,7 @@ class App extends Component {
                             return <PostList posts={this.state.posts}/>
                         }}/>
 
-                        <Route path="/post/:postId" render={() => {
+                        <Route path="/post/:postId" exact render={() => {
                             return <Post/>
                         }}/>
                     </content>

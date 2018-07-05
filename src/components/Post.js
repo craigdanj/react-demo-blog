@@ -15,30 +15,24 @@ class Post extends Component {
     }
 
     componentWillMount() {
-        var postList = [];
+
+        console.log(this)
 
         //fetch the current list of todos from the server
+        // if(state.match && state.match.params && state.match.params.postId) {
+            axios.get("https://jsonplaceholder.typicode.com/posts/")
+            .then(response => {
+                // handle success
 
-        axios.get("https://jsonplaceholder.typicode.com/posts",)
-        .then(response => {
-            // handle success
-            console.log(response.data);
-            postList = response.data.slice(0,10)
-
-            for (var i = postList.length - 1; i >= 0; i--) {
-                postList[i].checked = false;
-                postList[i].text = postList[i].title;
-            }
-
-            this.setState({
-                posts: postList
+                // this.setState({
+                //     posts: postList
+                // })
             })
-            
-        })
-        .catch(error => {
-            // handle error
-            console.log(error);
-        })
+            .catch(error => {
+                // handle error
+                console.log(error);
+            })
+        // }
     }
 
     render() {
