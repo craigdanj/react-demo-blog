@@ -34,8 +34,7 @@ class App extends Component {
 
             this.setState({
                 posts: postList
-            })
-            
+            }) 
         })
         .catch(error => {
             // handle error

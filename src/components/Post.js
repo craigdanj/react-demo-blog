@@ -16,14 +16,6 @@ class Post extends Component {
     }
 
     componentWillMount() {
-        this.setState({
-                    post: {
-                        title: "",
-                        body: "",
-                        new: true
-                    }
-                })
-        console.log(this)
 
         //fetch the current list of todos from the server
         if(this.props.match && this.props.match.params && this.props.match.params.postId !== "new") {
@@ -62,8 +54,6 @@ class Post extends Component {
                         <button type="button">Create</button>
                     :
                         <button type="button">Save</button>
-
-
                 }
             </form>
         );
