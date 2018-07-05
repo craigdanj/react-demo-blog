@@ -8,8 +8,8 @@ class Post extends Component {
 
         this.state = {
             post: {
-                title: null,
-                body: null
+                title: "",
+                body: ""
             }
         }
     }
@@ -49,7 +49,7 @@ class Post extends Component {
                 </p>
 
                 <p>
-                    <textarea rows="7" type="text" placeholder="Body">{this.state.post.body}</textarea>
+                    <textarea rows="7" type="text" placeholder="Body" value={this.state.post.body}></textarea>
                 </p>
 
                 <button>Create</button>

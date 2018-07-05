@@ -20,27 +20,29 @@ class App extends Component {
         var postList = [];
 
         //fetch the current list of todos from the server
+        if(this.state.match && this.state.match.params && this.state.match.params.postId) {
+            console.log(this.state.match.params.postId);
+            axios.get("https://jsonplaceholder.typicode.com/posts/" + this.state.match.params.postId)
+            .then(response => {
+                // handle success
+                console.log(response.data);
+                postList = response.data.slice(0,10)
 
-        axios.get("https://jsonplaceholder.typicode.com/posts")
-        .then(response => {
-            // handle success
-            console.log(response.data);
-            postList = response.data.slice(0,10)
+                for (var i = postList.length - 1; i >= 0; i--) {
+                    postList[i].checked = false;
+                    postList[i].text = postList[i].title;
+                }
 
-            for (var i = postList.length - 1; i >= 0; i--) {
-                postList[i].checked = false;
-                postList[i].text = postList[i].title;
-            }
-
-            this.setState({
-                posts: postList
+                this.setState({
+                    posts: postList
+                })
+                
             })
-            
-        })
-        .catch(error => {
-            // handle error
-            console.log(error);
-        })
+            .catch(error => {
+                // handle error
+                console.log(error);
+            })
+        }
     }
 
     render() {
