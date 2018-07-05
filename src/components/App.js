@@ -48,6 +48,10 @@ class App extends Component {
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo" />
                     <h1 className="App-title">React demo blog</h1>
+                    <div className="text-left container">
+                        <a>Home</a> /&nbsp;
+                        <a>Create post</a>
+                    </div>
                 </header>
 
                 <PostList posts={this.state.posts}/>

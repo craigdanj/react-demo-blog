@@ -6,10 +6,8 @@ function PostList(props) {
     });
 
     return (
-        
-
-        <div>
-            <ul className="text-left">
+        <div className="container">
+            <ul className="post-list text-left">
                 {postList}
             </ul>
         </div>
