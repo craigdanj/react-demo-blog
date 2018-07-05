@@ -15,7 +15,7 @@ class Post extends Component {
         }
     }
 
-    //Doesnt work when only url paramter changes.
+    //Doesnt work when only url parameter changes.
     componentWillMount() {
 
         //fetch the current list of todos from the server
@@ -36,10 +36,24 @@ class Post extends Component {
                 // handle error
                 console.log(error);
             })
+
         }
     }
 
+    componentWillReceiveProps() {
+        
+        this.setState({
+            post: {
+                title: "",
+                body: "",
+                new: true
+            }
+        })
+    }
+
     render() {
+        console.log("RERENDER")
+
         return (
             <form className="post text-left">
                 <p>
