@@ -58,12 +58,13 @@ class App extends Component {
                     <Route path="/" exact render={() => {
                         return <p>Home</p>
                     }}/>
-                    
+
                     <Route path="/create" render={() => {
                         return <p>Create post!!!!!!!!</p>
                     }}/>
-
                     
+                    
+                    <PostList posts={this.state.posts}/>                    
                 </div>
             </BrowserRouter>
         );
