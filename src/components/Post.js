@@ -15,6 +15,7 @@ class Post extends Component {
         }
     }
 
+    //Doesnt work when only url paramter changes.
     componentWillMount() {
 
         //fetch the current list of todos from the server
