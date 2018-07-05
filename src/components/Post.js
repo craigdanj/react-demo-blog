@@ -50,7 +50,6 @@ class Post extends Component {
                     <textarea rows="7" type="text" placeholder="Body" value={this.state.post.body}></textarea>
                 </p>
 
-                //Trigger post call on button click
                 {
                     this.state.post.new ?
                         <button type="button">Create</button>
