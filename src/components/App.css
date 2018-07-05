@@ -35,5 +35,12 @@
 .post-list li {
     padding: 20px 10px;
     border-bottom: 1px solid gray;
-    cursor: pointer;
+}
+
+.post {
+    margin: 40px;
+}
+
+.post * {
+    width: 400px;
 }

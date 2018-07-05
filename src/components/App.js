@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import './App.css';
-import PostList from './PostList'
 import axios from 'axios'
 import {BrowserRouter, Link, Route} from 'react-router-dom'
+import PostList from './PostList'
+import Post from './Post'
 
 class App extends Component {
     constructor(props) {
@@ -19,8 +20,8 @@ class App extends Component {
         var postList = [];
 
         //fetch the current list of todos from the server
-        
-        axios.get("https://jsonplaceholder.typicode.com/todos")
+
+        axios.get("https://jsonplaceholder.typicode.com/posts")
         .then(response => {
             // handle success
             console.log(response.data);
@@ -46,24 +47,24 @@ class App extends Component {
         return (
             <BrowserRouter>
                 <div className="App">
+
                     <header className="App-header">
                         <img src={logo} className="App-logo" alt="logo" />
                         <h1 className="App-title">React demo blog</h1>
                         <div className="text-left container">
                             <Link to="/">Home</Link> /&nbsp;
-                            <Link to="/create">Create post</Link>
+                            <Link to="/post">Create post</Link>
                         </div>
                     </header>
-                    <content>
 
+                    <content>
                         <Route path="/" exact render={() => {
                             return <PostList posts={this.state.posts}/>
                         }}/>
 
-                        <Route path="/create" render={() => {
-                            return <p>Create post!!!!!!!!</p>
+                        <Route path="/post/:postId" render={() => {
+                            return <Post/>
                         }}/>
-
                     </content>
 
                 </div>
